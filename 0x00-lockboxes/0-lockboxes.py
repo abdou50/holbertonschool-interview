@@ -5,10 +5,8 @@
 def canUnlockAll(boxes):
     t = [0]
     for j, i in enumerate(boxes):
-        if not i:
-            continue
         for keys in i:
-            if keys != j and keys not in t:
+            if keys != j and keys not in t and keys < len(boxes):
                 t.append(keys)
     if len(t) == len(boxes):
         return True
