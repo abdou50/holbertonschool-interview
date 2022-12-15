@@ -1,4 +1,10 @@
 #include "lists.h"
+/**
+ * insert_node - print Linkedlist.
+ * @head: Pointer to next node.
+ * @number: the node data
+ * Return: nodes number.
+**/
 listint_t *insert_node(listint_t **head, int number)
 {
 	listint_t *new_node = malloc(sizeof(listint_t));
@@ -13,7 +19,7 @@ listint_t *insert_node(listint_t **head, int number)
 	}
 	else
 	{
-		current = *head 
+		current = *head;
 		while (current->next != NULL && current->next->n < new_node->n)
 		{
 			current = current->next;
@@ -24,3 +30,4 @@ listint_t *insert_node(listint_t **head, int number)
 	}
 	return (new_node);
 }
+
