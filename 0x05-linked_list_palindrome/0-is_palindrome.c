@@ -4,45 +4,31 @@
  * @head: pointer to head of list
  * Return: 0 or 1
  */
-int is_palindrome(listint_t **head){
+int is_palindrome(listint_t **head)
+{
 
-	int size ,i, *arr, *arrrev ,k;
+	int n ,i,*arr, flag = 0;
 
 	if (head == NULL)
 	{
 		return (1);
 	}
-	size = 0;
+	n = 0;
 	arr = malloc(sizeof(listint_t));
-    arrrev = malloc(sizeof(listint_t));
 	while (*head)
 	{
-		arr[size] = (*head)->n;
-		size++;
+		arr[n] = (*head)->n;
+		n++;
         (*head) = (*head)->next;
 	}
-    for (i = 0; i < size; i++)
-    {
-        printf("%d /", arr[i]);
+    for (i = 0; i <= n / 2 && n != 0; i++) {
+        if (arr[i] != arr[n - i - 1]) {
+            flag = 1;
+            break;
+        }
     }
-    printf("\n");
-
-    for (i = size-1; i>=0; i--){
-       arrrev[size-1-i] = arr[i];
-    }
-    for (i = 0; i < size; i++)
-    {
-        printf("%d /", arrrev[i]);
-    }
-    printf("\n");
-    for (i = 0; i<size; i++)
-    {
-        if(arr[i] != arrrev[i])
-            k = 1;
-        else 
-            k = 2;
-    }
-    if (k == 1)
-        return 0;
-    return 1;
+   if (flag == 1)
+    return 0;
+   else
+     return 1;
 }
