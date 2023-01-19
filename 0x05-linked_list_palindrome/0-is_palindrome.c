@@ -7,7 +7,7 @@
 int is_palindrome(listint_t **head)
 {
 
-	int n ,i,*arr, flag = 0;
+	int n, i, *arr, flag = 0;
 
 	if (head == NULL)
 	{
@@ -19,16 +19,18 @@ int is_palindrome(listint_t **head)
 	{
 		arr[n] = (*head)->n;
 		n++;
-        (*head) = (*head)->next;
+		(*head) = (*head)->next;
 	}
-    for (i = 0; i <= n / 2 && n != 0; i++) {
-        if (arr[i] != arr[n - i - 1]) {
-            flag = 1;
-            break;
-        }
-    }
-   if (flag == 1)
-    return 0;
-   else
-     return 1;
+	for (i = 0; i <= n / 2 && n != 0; i++)
+	{
+		if (arr[i] != arr[n - i - 1])
+		{
+			flag = 1;
+			break;
+		}
+	}
+	if (flag == 1)
+		return (0);
+	else
+		return (1);
 }
