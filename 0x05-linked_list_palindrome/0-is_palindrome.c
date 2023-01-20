@@ -7,14 +7,14 @@
 int is_palindrome(listint_t **head)
 {
 
-	int n, i, *arr, flag = 0;
+	int n, i, flag = 0;
+	int arr[100];
 
 	if (head == NULL)
 	{
 		return (1);
 	}
 	n = 0;
-	arr [];
 	while (*head)
 	{
 		arr[n] = (*head)->n;
