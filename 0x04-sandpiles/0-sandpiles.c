@@ -86,11 +86,11 @@ void permutation(int grid1[3][3])
 }
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
-	if (is_stable(grid1) == 1 || is_stable(grid2) == 1)
+	if (is_stable(grid1) == 0 || is_stable(grid2) == 0)
 		return;
 	addition(grid1, grid2);
 
-	while (is_stable(grid1) != 0)
+	while (is_stable(grid1) != 1)
 	{
 		printf("=\n");
 		print_grid(grid1);
