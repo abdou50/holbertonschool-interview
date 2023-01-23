@@ -1,7 +1,7 @@
 #include "sandpiles.h"
 
 /**
- * sandpiles_sum - sandplis theory
+ * addition - sum of two grids
  * @grid1: Left 3x3 grid
  * @grid2: Right 3x3 grid
  *
@@ -19,6 +19,11 @@ void addition(int grid1[3][3], int grid2[3][3])
 		}
 	}
 }
+/**
+ * is_stable - checks if a grid is greater than 3
+ * @grid: Left 3x3 grid
+ * Return: 1 on success 0 in !success
+ */
 int is_stable(int grid[3][3])
 {
 	int i = 0;
@@ -34,37 +39,39 @@ int is_stable(int grid[3][3])
 	}
 	return (1);
 }
-
 /**
  * print_grid - Print 3x3 grid
  * @grid: 3x3 grid
- *
  */
 static void print_grid(int grid[3][3])
 {
 	int i, j;
 
 	for (i = 0; i < 3; i++)
-    {
-        for (j = 0; j < 3; j++)
-        {
-            if (j)
-                printf(" ");
-            printf("%d", grid[i][j]);
-        }
-        printf("\n");
-    }
+	{
+		for (j = 0; j < 3; j++)
+		{
+			if (j)
+				printf(" ");
+			printf("%d", grid[i][j]);
+		}
+		printf("\n");
+	}
 }
+/**
+ * permutation - permutation
+ * @grid1: Left 3x3 grid
+*/
 void permutation(int grid1[3][3])
 {
 	int i = 0;
 	int j = 0;
-    int externe[3][3] = {
+	int externe[3][3] = {
 		{0, 0, 0},
 		{0, 0, 0},
 		{0, 0, 0}};
 
-    for (i = 0; i < 3; i++)
+	for (i = 0; i < 3; i++)
 	{
 		for (j = 0; j < 3; j++)
 		{
@@ -82,8 +89,13 @@ void permutation(int grid1[3][3])
 			}
 		}
 	}
-    addition(grid1, externe);
+	addition(grid1, externe);
 }
+/**
+ * sandpiles_sum - main function
+ * @grid1: Left 3x3 grid
+ * @grid2: Right 3x3 grid
+ */
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
 	if (is_stable(grid1) == 0 || is_stable(grid2) == 0)
