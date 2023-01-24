@@ -1,5 +1,22 @@
 #include "sandpiles.h"
+/**
+ * sandpiles_sum - main function
+ * @grid1: Left 3x3 grid
+ * @grid2: Right 3x3 grid
+ */
+void sandpiles_sum(int grid1[3][3], int grid2[3][3])
+{
+	if (is_stable(grid1) == 0 || is_stable(grid2) == 0)
+		return;
+	addition(grid1, grid2);
 
+	while (is_stable(grid1) != 1)
+	{
+		printf("=\n");
+		print_grid(grid1);
+		permutation(grid1);
+	}
+}
 /**
  * addition - sum of two grids
  * @grid1: Left 3x3 grid
@@ -90,22 +107,4 @@ void permutation(int grid1[3][3])
 		}
 	}
 	addition(grid1, externe);
-}
-/**
- * sandpiles_sum - main function
- * @grid1: Left 3x3 grid
- * @grid2: Right 3x3 grid
- */
-void sandpiles_sum(int grid1[3][3], int grid2[3][3])
-{
-	if (is_stable(grid1) == 0 || is_stable(grid2) == 0)
-		return;
-	addition(grid1, grid2);
-
-	while (is_stable(grid1) != 1)
-	{
-		printf("=\n");
-		print_grid(grid1);
-		permutation(grid1);
-	}
 }
