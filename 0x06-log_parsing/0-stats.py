@@ -1,10 +1,11 @@
 #!/usr/bin/python3
+""" function"""
 
 import sys
 
 
 if __name__ == "__main__":
-    status = {"200": 0,
+    st_file = {"200": 0,
                "301": 0,
                "400": 0,
                "401": 0,
@@ -16,22 +17,22 @@ if __name__ == "__main__":
     size = 0
 
     def parse_line(line):
-        """ Read, parse and grab data"""
+        """ Read parse"""
         try:
             parsed_line = line.split()
             status_code = parsed_line[-2]
-            if status_code in status.keys():
-                status[status_code] += 1
+            if status_code in st_file.keys():
+                st_file[status_code] += 1
             return int(parsed_line[-1])
         except Exception:
             return 0
 
     def print_stats():
-        """print stats"""
+        """print stats """
         print("File size: {}".format(size))
-        for key in sorted(status.keys()):
-            if status[key]:
-                print("{}: {}".format(key, status[key]))
+        for key in sorted(st_file.keys()):
+            if st_file[key]:
+                print("{}: {}".format(key, st_file[key]))
 
     try:
         for line in sys.stdin:
