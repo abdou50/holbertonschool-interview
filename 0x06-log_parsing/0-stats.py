@@ -19,7 +19,6 @@ if __name__ == "__main__":
         """ Read, parse and grab data"""
         try:
             parsed_line = line.split()
-            print(parse_line)
             status_code = parsed_line[-2]
             if status_code in status.keys():
                 status[status_code] += 1
