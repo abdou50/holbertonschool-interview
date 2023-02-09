@@ -16,9 +16,5 @@ int is_palindrome(unsigned long n)
 		l = l * 10 + r;
 		n /= 10;
 	}
-	printf("%ld\n", o);
-	printf("%ld\n", r);
-	printf("%ld\n", l);
-	printf("%ld\n", n);
 	return (o == l);
 }
