@@ -7,20 +7,13 @@
  */
 int is_palindrome(unsigned long n)
 {
-	int div = 1, l, r;
+	unsigned long l, r;
 
-	while (n / div >= 10)
-	{
-		div *= 10;
-	}
 	while (n != 0)
 	{
-		l = n / div;
 		r = n % 10;
-		if (l != r)
-			return (0);
-		n = (n % div) / 10;
-		div /= 100;
+		l = l * 10 + r;
+		n /= 10;
 	}
-	return (1);
+	return (n == l);
 }
