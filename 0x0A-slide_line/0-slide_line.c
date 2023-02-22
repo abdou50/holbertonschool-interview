@@ -1,20 +1,18 @@
 #include "slide_line.h"
 
-void swap(int *xp, int *yp)
-{
-	int temp = *xp;
-
-	*xp = *yp;
-	*yp = temp;
-}
 void pushl(int *arr, size_t n)
 {
 	size_t i, j;
+	int aux;
 
 	for (i = 0; i < n - 1; i++)
 		for (j = 0; j < n - i - 1; j++)
 			if (arr[j] > arr[j + 1])
-				swap(&arr[j], &arr[j + 1]);
+			{
+				aux = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = aux;
+			}
 }
 void mergel(int *list, size_t size)
 {
@@ -35,11 +33,16 @@ void mergel(int *list, size_t size)
 void pushr(int *arr, size_t n)
 {
 	size_t i, j;
+	int aux;
 
 	for (i = 0; i < n - 1; i++)
 		for (j = 0; j < n - i - 1; j++)
 			if (arr[j] < arr[j + 1])
-				swap(&arr[j], &arr[j + 1]);
+			{
+				aux = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = aux;
+			}
 }
 void merger(int *list, size_t size)
 {
