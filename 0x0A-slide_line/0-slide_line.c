@@ -1,6 +1,6 @@
 #include "slide_line.h"
 
-void pushl(int *arr, size_t n)
+void pushr(int *arr, size_t n)
 {
 	size_t i, j;
 	int aux;
@@ -14,23 +14,22 @@ void pushl(int *arr, size_t n)
 				arr[j + 1] = aux;
 			}
 }
-void mergel(int *list, size_t size)
+
+void merger(int *array, size_t size)
 {
-	size_t i;
+    size_t i;
 
-	for (i = 0; i < size; i++)
+	for (i = size - 1; i + 1 > 1; i--)
 	{
-		if (list[i] != 0)
-			if (list[i] == list[i + 1])
-			{
-				list[i + 1] *= 2;
-				list[i] = 0;
-			}
-		break;
+		if (array[i] == array[i - 1])
+		{
+			array[i - 1] *= 2;
+			array[i] = 0;
+			--i;
+		}
 	}
-
 }
-void pushr(int *arr, size_t n)
+void pushl(int *arr, size_t n)
 {
 	size_t i, j;
 	int aux;
@@ -44,21 +43,19 @@ void pushr(int *arr, size_t n)
 				arr[j + 1] = aux;
 			}
 }
-void merger(int *list, size_t size)
+void mergel(int *array, size_t size)
 {
-	size_t i;
+    size_t i;
 
-	for (i = size; i > 0; i--)
+	for (i = 0; i < size - 1; i++)
 	{
-		if (list[i] != 0)
-			if (list[i] == list[i - 1])
-			{
-				list[i - 1] *= 2;
-				list[i] = 0;
-			}
-		break;
+		if (array[i] == array[i + 1])
+		{
+			array[i + 1] *= 2;
+			array[i] = 0;
+			++i;
+		}
 	}
-
 }
 int slide_line(int *line, size_t size, int direction)
 {
@@ -67,15 +64,15 @@ int slide_line(int *line, size_t size, int direction)
 
 	if (direction == SLIDE_LEFT)
 	{
-		pushr(line, size);
-		merger(line, size);
-		pushr(line, size);
-	}
-	else if (direction == SLIDE_RIGHT)
-	{
 		pushl(line, size);
 		mergel(line, size);
 		pushl(line, size);
+	}
+	else if (direction == SLIDE_RIGHT)
+	{
+		pushr(line, size);
+		merger(line, size);
+		pushr(line, size);
 	}
 	else
 		return (0);
