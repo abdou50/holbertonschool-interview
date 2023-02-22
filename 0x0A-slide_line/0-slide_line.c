@@ -89,7 +89,8 @@ int slide_line(int *line, size_t size, int direction)
 {
 	if (line == NULL || size < 1)
 		return (0);
-
+	if (direction != SLIDE_LEFT && direction != SLIDE_RIGHT)
+		return (0);
 	if (direction == SLIDE_LEFT)
 	{
 		pushl(line, size);
