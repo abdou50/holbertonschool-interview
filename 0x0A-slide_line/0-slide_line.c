@@ -59,7 +59,7 @@ void mergel(int *array, size_t size)
 }
 int slide_line(int *line, size_t size, int direction)
 {
-	if (line == 0)
+	if (line == NULL || size <1)
 		return (0);
 
 	if (direction == SLIDE_LEFT)
