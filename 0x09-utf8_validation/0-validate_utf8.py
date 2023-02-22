@@ -10,22 +10,23 @@ This is how the UTF-8 encoding would work:
 
 def validUTF8(data):
     """
-    :type data: List[int]
-    :rtype: bool
+    function
     """
-    count = 0
-    for c in data:
-        if count == 0:
-            if (c >> 5) == 0b110:
-                count = 1
-            elif (c >> 4) == 0b1110:
-                count = 2
-            elif (c >> 3) == 0b11110:
-                count = 3
-            elif (c >> 7):
-                return False
+    i = 0
+    while i < len(data):
+        size = 0
+        shift = 1 << 7
+        while shift & data[i]:
+            size += 1
+            shift >>= 1
+        if size == 0:
+            pass
+        elif size == 1 or size > 4:
+            return False
         else:
-            if (c >> 6) != 0b10:
-                return False
-            count -= 1
-    return count == 0
+            for j in range(i + 1, i + size):
+                if j >= len(data) or (data[j] >> 6) != 2:
+                    return False
+            i += size - 1
+        i += 1
+    return True
