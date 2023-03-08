@@ -1,40 +1,62 @@
 #include "menger.h"
+/**
+* menger - function
+* @level: the level
+*/
+void menger(int level)
+{
+	int size, i, j;
 
-void menger(int level) {
-    if (level < 0) {
-        return;
-    }
+	if (level < 0)
+	{
+		return (0);
+	}
 
-    int size = (int) pow(3, level);
+	size = (int) pow(3, level);
 
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            if (i % 3 == 1 && j % 3 == 1) {
-                // center of the square is left empty
-                printf(" ");
-            } else {
-                draw(j, i, level);
-            }
-        }
-        printf("\n");
-    }
+	for (i = 0; i < size; i++)
+	{
+		for (j = 0; j < size; j++)
+		{
+			if (i % 3 == 1 && j % 3 == 1)
+			{
+				printf(" ");
+			}
+			else
+			{
+				draw(j, i, level);
+			}
+		}
+		printf("\n");
+	}
 }
+/**
+* draw - function
+* @x: int
+* @y: int
+* @level: the level
+*/
+void draw(int x, int y, int level)
+{
+	int size, cx, cy;
 
-void draw(int x, int y, int level) {
-    if (level == 0) {
-        // base case: draw a single # character
-        printf("#");
-    } else {
-        // recursive case: draw a 3x3 square of level-1 sponges
-        int size = (int) pow(3, level - 1);
-        int cx = x / 3;
-        int cy = y / 3;
+	if (level == 0)
+	{
+		printf("#");
+	}
+	else
+	{
+		size = (int) pow(3, level - 1);
+		cx = x / 3;
+		cy = y / 3;
 
-        if (cx % 3 == 1 && cy % 3 == 1) {
-            // center of the square is left empty
-            printf(" ");
-        } else {
-            draw(x % size, y % size, level - 1);
-        }
-    }
+		if (cx % 3 == 1 && cy % 3 == 1)
+		{
+			printf(" ");
+		}
+		else
+		{
+			draw(x % size, y % size, level - 1);
+		}
+	}
 }
