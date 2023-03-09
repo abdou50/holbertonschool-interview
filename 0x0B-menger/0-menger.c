@@ -12,7 +12,7 @@ void menger(int level)
 		return;
 	}
 
-	size = (int) pow(3, level);
+	size = pow(3, level);
 
 	for (i = 0; i < size; i++)
 	{
@@ -46,7 +46,7 @@ void draw(int x, int y, int level)
 	}
 	else
 	{
-		size = (int) pow(3, level - 1);
+		size = pow(3, level - 1);
 		cx = x / 3;
 		cy = y / 3;
 
