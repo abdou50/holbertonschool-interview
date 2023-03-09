@@ -9,7 +9,7 @@ void menger(int level)
 
 	if (level < 0)
 	{
-		return (0);
+		return;
 	}
 
 	size = (int) pow(3, level);
