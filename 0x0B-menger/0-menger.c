@@ -7,11 +7,6 @@ void menger(int level)
 {
 	int size, i, j;
 
-	if (level < 0)
-	{
-		return;
-	}
-
 	size = pow(3, level);
 
 	for (i = 0; i < size; i++)
