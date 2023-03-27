@@ -10,8 +10,8 @@ avl_t *createavlnode(int n, avl_t *parent)
 {
 	avl_t *node = malloc(sizeof(*node));
 
-	if (!new)
-		return (NULL)node
+	if (!node)
+		return (NULL);
 	node->n = n;
 	node->parent = parent;
 	node->left = NULL;
