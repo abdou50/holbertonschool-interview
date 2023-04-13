@@ -8,9 +8,9 @@ if (args < 1) {
 }
 
 const episode = args[0];
-const request = require('request');
 
 const url = 'https://swapi-api.hbtn.io/api/films/' + episode;
+const request = require('request');
 let characters = [];
 request(url, (err, resp, body) => {
   if (err || resp.statusCode !== 200) console.log(err);
