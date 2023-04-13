@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// nodejs script
+// nodejs scrip
 
 const args = process.argv.slice(2);
 if (args < 1) {
@@ -8,9 +8,8 @@ if (args < 1) {
 }
 
 const episode = args[0];
-
+const request = require('request');
 const url = 'https://swapi-api.hbtn.io/api/films/' + episode;
-import request from 'request';
 let characters = [];
 request(url, (err, resp, body) => {
   if (err || resp.statusCode !== 200) console.log(err);
