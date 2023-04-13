@@ -9,6 +9,7 @@ if (args < 1) {
 
 const episode = args[0];
 const request = require('request');
+
 const url = 'https://swapi-api.hbtn.io/api/films/' + episode;
 let characters = [];
 request(url, (err, resp, body) => {
