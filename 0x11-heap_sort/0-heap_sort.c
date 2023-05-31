@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "sort.h"
+
 /**
  * swap - swaps two values
  *
@@ -9,61 +10,60 @@
  */
 void swap(int *a, int *b)
 {
-	int temp = *a;
+	int a1 = *a;
+	int b1 = *b;
 
-	*a = *b;
-	*b = temp;
+	*a = b1;
+	*b = a1;
 }
 /**
  * siftDown - function
  *
  * @array: the array
- * @start: the value to start with
+ * @i: the value to start with
  * @end: the end
  * @size: the size
  */
-void siftDown(int *array, int start, int end, size_t size)
+
+void siftDown(int *array, size_t size, size_t i, size_t end)
 {
-	int root = start;
+	size_t max = i;
+	size_t left = 2 * i + 1;
+	size_t right = 2 * i + 2;
 
-	while (2 * root + 1 <= end)
+	if (left < size && array[left] > array[max])
+		max = left;
+
+	if (right < size && array[right] > array[max])
+		max = right;
+
+	if (max != i)
 	{
-		int child = 2 * root + 1;
-		int swapIndex = root;
-
-		if (array[swapIndex] < array[child])
-			swapIndex = child;
-
-		if (child + 1 <= end && array[swapIndex] < array[child + 1])
-			swapIndex = child + 1;
-
-		if (swapIndex == root)
-			break;
-        else
-        {
-		swap(&array[root], &array[swapIndex]);
-		print_array(array, size);
-		root = swapIndex;
-        }
+		swap(&array[i], &array[max]);
+		print_array(array, end);
+		siftDown(array, size, max, end);
 	}
 }
+
 /**
- * heap_sort - function
- * @array: the array
- * @size: the size of the array
+ * heap_sort - this function implements a heap sort algorithm
+ * @array: The array to sort
+ * @size: Number of elements in @array
  */
 void heap_sort(int *array, size_t size)
 {
-	int i;
+	size_t i;
+	size_t end = size;
 
-	for (i = size / 2 - 1; i >= 0; i--)
-		siftDown(array, i, size - 1, size);
-
-	for (i = size - 1; i >= 0; i--)
-
+	if (array != NULL)
 	{
-		swap(&array[0], &array[i]);
-		print_array(array, size);
-		siftDown(array, 0, i - 1, size);
+		for (i = size / 2 - 1; (int)i >= 0; i--)
+			siftDown(array, size, i, end);
+		for (i = size - 1; i > 0; i--)
+		{
+			swap(&array[0], &array[i]);
+			print_array(array, size);
+			siftDown(array, i, 0, end);
+		}
 	}
 }
