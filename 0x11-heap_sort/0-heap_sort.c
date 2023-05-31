@@ -2,47 +2,65 @@
 #include <stdio.h>
 #include "sort.h"
 /**
- * print_array - Prints an array of integers
+ * swap - swaps two values
  *
- * @array: The array to be printed
- * @size: Number of elements in @array
+ * @a: value 1
+ * @b: value 2
  */
 void swap(int *a, int *b)
 {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
+	int temp = *a;
 
-void siftDown(int *array, int start, int end)
+	*a = *b;
+	*b = temp;
+}
+/**
+ * siftDown - function
+ *
+ * @array: the array
+ * @start: the value to start with
+ * @end: the end
+ * @size: the size
+ */
+void siftDown(int *array, int start, int end, size_t size)
 {
-    int root = start;
+	int root = start;
 
-    while (2 * root + 1 <= end) {
-        int child = 2 * root + 1;
-        int swapIndex = root;
+	while (2 * root + 1 <= end)
+	{
+		int child = 2 * root + 1;
+		int swapIndex = root;
 
-        if (array[swapIndex] < array[child])
-            swapIndex = child;
+		if (array[swapIndex] < array[child])
+			swapIndex = child;
 
-        if (child + 1 <= end && array[swapIndex] < array[child + 1])
-            swapIndex = child + 1;
+		if (child + 1 <= end && array[swapIndex] < array[child + 1])
+			swapIndex = child + 1;
 
-        if (swapIndex == root)
-            return;
-        else {
-            swap(&array[root], &array[swapIndex]);
-            root = swapIndex;
-        }
-    }
+		if (swapIndex == root)
+			break;
+		swap(&array[root], &array[swapIndex]);
+		print_array(array, size);
+		root = swapIndex;
+	}
 }
-void heap_sort(int *array, size_t size) {
-    for (int i = size / 2 - 1; i >= 0; i--)
-        siftDown(array, i, size - 1);
+/**
+ * heap_sort - function
+ * @array: the array
+ * @size: the size of the array
+ */
+void heap_sort(int *array, size_t size)
+{
+	int i;
 
-    for (int i = size - 1; i >= 0; i--) {
-        swap(&array[0], &array[i]);
-        print_array(array,size);
-        siftDown(array, 0, i - 1);
-    }
-    }
+	for (i = size / 2 - 1; i >= 0; i--)
+		siftDown(array, i, size - 1, size);
+
+	for (i = size - 1; i >= 0; i--)
+
+	{
+		swap(&array[0], &array[i]);
+		print_array(array, size);
+		siftDown(array, 0, i - 1, size);
+	}
+}
