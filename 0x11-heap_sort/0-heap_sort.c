@@ -39,9 +39,12 @@ void siftDown(int *array, int start, int end, size_t size)
 
 		if (swapIndex == root)
 			break;
+        else
+        {
 		swap(&array[root], &array[swapIndex]);
 		print_array(array, size);
 		root = swapIndex;
+        }
 	}
 }
 /**
