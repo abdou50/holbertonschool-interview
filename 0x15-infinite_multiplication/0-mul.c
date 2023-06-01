@@ -33,14 +33,14 @@ int _isdigit(char *s)
  * operations - multiplies, adds and stores the result in a string.
  * @num1: first number.
  * @num2: second number.
- * @len1: length of num1.
- * @len2: length of num2.
+ * @length1: length of num1.
+ * @length2: length of num2.
  * Return: result of multiplies.
  */
-char *operations(char *num1, char *num2, int len1, int len2)
+char *operations(char *num1, char *num2, int length1, int length2)
 {
 	char *result = NULL;
-	int i, j, carry, len_total = (len1 + len2);
+	int i, j, carry, len_total = (length1 + length2);
 
 	result = malloc(sizeof(char) * len_total);
 	if (!result)
@@ -50,10 +50,10 @@ char *operations(char *num1, char *num2, int len1, int len2)
 	}
 	for (i = 0; i < len_total; i++)
 		result[i] = '0';
-	for (i = len1 - 1; i >= 0; i--)
+	for (i = length1 - 1; i >= 0; i--)
 	{
 		carry = 0;
-		for (j = len2 - 1; j >= 0; j--)
+		for (j = length2 - 1; j >= 0; j--)
 		{
 			carry += (num1[i] - '0') * (num2[j] - '0');
 			carry += result[i + j + 1] - '0';
@@ -67,23 +67,21 @@ char *operations(char *num1, char *num2, int len1, int len2)
 }
 /**
  * main - multiplies two positive numbers.
- * description: Usage: mul num1 num2
- * Print the result, followed by a new line.
- * @av: arguments value (num1, num2)
- * @ac: arguments count
+ * @argv: arguments value (num1, num2)
+ * @argc: arguments count
  * Return: 0 if success otherwise 98 and print Error.
  */
-int main(int ac, char **av)
+int main(int argc, char **argv)
 {
 	int len1 = 0, len2 = 0;
-	char *num1 = av[1], *num2 = av[2], *result = NULL;
+	char *num1 = argv[1], *num2 = argv[2], *result = NULL;
 
-	if (ac != 3 || _isdigit(num1) || _isdigit(num2))
+	if (argc != 3 || _isdigit(num1) || _isdigit(num2))
 	{
 		_puts("Error");
 		exit(98);
 	}
-	if (av[1][0] == 48 || av[2][0] == 48)
+	if (argv[1][0] == 48 || argv[2][0] == 48)
 	{
 		_puts("0");
 		exit(0);
