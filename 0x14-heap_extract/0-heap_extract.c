@@ -3,8 +3,7 @@
 /**
  * heap_extract - extracts the root node of a Max Binary Heap
  * @root:  pointer to the root
- *
- * Return: 1 or 0 
+ * Return: 1 or 0
  */
 
 int heap_extract(heap_t **root)
@@ -42,8 +41,7 @@ size_t binary_tree_height(heap_t *root)
 
 /**
  * getting - finds first location that does not have a right child
-
- * @root: pointer to the root 
+ * @root: pointer to the root
  * @level: the level
  * @last: last node
  * Return: 1 or 0
