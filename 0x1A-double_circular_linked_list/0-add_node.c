@@ -42,26 +42,10 @@ List *add_node_end(List **list, char *str)
  */
 List *add_node_begin(List **list, char *str)
 {
-    List *new, *temp;
+	List *new_node = add_node_end(list, str);
 
-    new = malloc(sizeof(List));
-    if (new == NULL)
-        return NULL;
-
-    new->str = str;
-    new->next = NULL;
-    new->prev = NULL;
-
-    if (*list == NULL)
-    {
-        *list = new;
-    }
-    else
-    {
-        temp = *list;
-        new->next = temp;
-        temp->prev = new;
-        *list = new;
-    }
-    return (new);
+	if (new_node == NULL)
+		return (NULL);
+	*list = new_node;
+	return (new_node);
 }
